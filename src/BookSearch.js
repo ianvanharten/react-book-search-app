@@ -1,8 +1,8 @@
-function BookSearch() {
+function BookSearch(props) {
     return(
         <div>
             <input type="text" />
-            <button>Search</button>
+            <button onClick={props.onClick}>Search</button>
         </div>
     )
 }
