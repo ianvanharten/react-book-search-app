@@ -1,27 +1,30 @@
-import React, {useState} from "react";
+import React, { useState, useRef } from "react";
 import BookCard from "./BookCard";
 
 // TODO: get search query, onChange method to save in state
 function BookSearch() {
-    const [ books, setBooks ] = useState(['History Book', 'Philosophy Book'])
+    const [ books, setBooks ] = useState([])
+    const bookSearchRef = useRef()
     return(
         <div>
-            <input type="text" />
+            <input ref={bookSearchRef} type="text" />
             <button onClick={getBookData}>Search</button>
             {books.map((book) => {
-                return <BookCard book={book} />
+                return <BookCard key={book} book={book} />
             })}
         </div>
     )
 
     function getBookData() {
+        const results = []
         fetch('https://www.googleapis.com/books/v1/volumes?q=clean+coder')
             .then(response => response.json())
             .then(data => {
-                // console.log(data.items[0].volumeInfo.title)
-                setBooks(data.items[0].volumeInfo.title)
-                console.log(books[0])
+                data.items.forEach((item) => {
+                    results.push(item.volumeInfo.title)
+                })
             })
+            .then(() => setBooks(results))
     }
 }
 
