@@ -1,12 +1,16 @@
-import {useState} from "react";
+import React, {useState} from "react";
+import BookCard from "./BookCard";
 
-function BookSearch(props) {
-    const [ searchResults, setSearchResults ] = useState([])
+// TODO: get search query, onChange method to save in state
+function BookSearch() {
+    const [ books, setBooks ] = useState(['History Book', 'Philosophy Book'])
     return(
         <div>
             <input type="text" />
             <button onClick={getBookData}>Search</button>
-            {(searchResults.length > 0) ? <p>{searchResults}</p> : ''}
+            {books.map((book) => {
+                return <BookCard book={book} />
+            })}
         </div>
     )
 
@@ -15,12 +19,10 @@ function BookSearch(props) {
             .then(response => response.json())
             .then(data => {
                 // console.log(data.items[0].volumeInfo.title)
-                setSearchResults(data.items[0].volumeInfo.title)
-                console.log(searchResults)
+                setBooks(data.items[0].volumeInfo.title)
+                console.log(books[0])
             })
     }
 }
-
-
 
 export default BookSearch
