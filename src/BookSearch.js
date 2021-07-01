@@ -16,8 +16,9 @@ function BookSearch() {
     )
 
     function getBookData() {
+        const searchQuery = bookSearchRef.current.value
         const results = []
-        fetch('https://www.googleapis.com/books/v1/volumes?q=clean+coder')
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data.items)
