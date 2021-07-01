@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import BookCard from "./BookCard";
 
-// TODO: get search query, onChange method to save in state
 function BookSearch() {
     const [ books, setBooks ] = useState([])
     const bookSearchRef = useRef()
