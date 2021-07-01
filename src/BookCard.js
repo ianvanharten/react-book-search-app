@@ -3,7 +3,7 @@ import React from "react"
 function BookCard(props) {
     return (
         <div>
-            <h3>{props.book}</h3>
+            <h3>{props.book.title}</h3>
         </div>
     )
 }

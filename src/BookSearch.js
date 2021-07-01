@@ -10,7 +10,7 @@ function BookSearch() {
             <input ref={bookSearchRef} type="text" />
             <button onClick={getBookData}>Search</button>
             {books.map((book) => {
-                return <BookCard key={book} book={book} />
+                return <BookCard key={book.id} book={book} />
             })}
         </div>
     )
@@ -20,8 +20,20 @@ function BookSearch() {
         fetch('https://www.googleapis.com/books/v1/volumes?q=clean+coder')
             .then(response => response.json())
             .then(data => {
+                console.log(data.items)
                 data.items.forEach((item) => {
-                    results.push(item.volumeInfo.title)
+                    // create a book object with title, author, description, image
+                    let book = {
+                        id: item.id,
+                        title: item.volumeInfo.title,
+                        author: item.volumeInfo.authors,
+                        description: item.volumeInfo.description,
+                        categories: item.volumeInfo.categories,
+                        publishedDate: item.volumeInfo.publishedDate,
+                        image: item.volumeInfo.imageLinks.thumbnail
+                    }
+                    console.log(book)
+                    results.push(book)
                 })
             })
             .then(() => setBooks(results))
