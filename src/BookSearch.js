@@ -4,13 +4,27 @@ import BookCard from "./BookCard";
 function BookSearch() {
     const [ books, setBooks ] = useState([])
     const bookSearchRef = useRef()
+
+    const bookSearchStyles = {
+        width: '80%',
+        border: '1px solid black',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+    }
+
     return(
-        <div>
-            <input ref={bookSearchRef} type="text" />
-            <button onClick={getBookData}>Search</button>
-            {books.map((book) => {
-                return <BookCard key={book.id} book={book} />
-            })}
+        <div style={bookSearchStyles}>
+            <div>
+                <input ref={bookSearchRef} type="text" />
+                <button onClick={getBookData}>Search</button>
+            </div>
+
+            <div>
+                {books.map((book) => {
+                    return <BookCard key={book.id} book={book} />
+                })}
+            </div>
         </div>
     )
 

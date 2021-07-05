@@ -3,14 +3,14 @@ import Header from './Header'
 import BookSearch from './BookSearch'
 
 function App() {
-    const styles = {
+    const appStyles = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
     }
 
   return (
-    <div style={styles}>
+    <div style={appStyles}>
         <Header />
         <BookSearch />
     </div>
