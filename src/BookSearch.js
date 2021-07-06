@@ -7,10 +7,17 @@ function BookSearch() {
 
     const bookSearchStyles = {
         width: '80%',
-        border: '1px solid black',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
+    }
+
+    const bookResultsStyles = {
+        width: '80%',
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center'
     }
 
     return(
@@ -20,7 +27,7 @@ function BookSearch() {
                 <button onClick={getBookData}>Search</button>
             </div>
 
-            <div>
+            <div style={bookResultsStyles}>
                 {books.map((book) => {
                     return <BookCard key={book.id} book={book} />
                 })}
