@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import BookCard from "./BookCard";
+import React, { useState, useRef } from "react"
+import BookCard from "./BookCard"
 
 function BookSearch() {
     const [ books, setBooks ] = useState([])
