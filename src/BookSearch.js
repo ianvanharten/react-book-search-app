@@ -43,18 +43,26 @@ function BookSearch() {
             .then(data => {
                 console.log(data.items)
                 data.items.forEach((item) => {
-                    // create a book object with title, author, description, image
-                    let book = {
-                        id: item.id,
-                        title: item.volumeInfo.title,
-                        author: item.volumeInfo.authors,
-                        description: item.volumeInfo.description,
-                        categories: item.volumeInfo.categories,
-                        publishedDate: item.volumeInfo.publishedDate,
-                        image: item.volumeInfo.imageLinks.thumbnail
+                    if (item.hasOwnProperty('id')
+                        && item.volumeInfo.hasOwnProperty('title')
+                        && item.volumeInfo.hasOwnProperty('authors')
+                        && item.volumeInfo.hasOwnProperty('description')
+                        && item.volumeInfo.hasOwnProperty('categories')
+                        && item.volumeInfo.hasOwnProperty('publishedDate')
+                        && item.volumeInfo.hasOwnProperty('imageLinks'))
+                    {
+                        let book = {
+                            id: item.id,
+                            title: item.volumeInfo.title,
+                            author: item.volumeInfo.authors,
+                            description: item.volumeInfo.description,
+                            categories: item.volumeInfo.categories,
+                            publishedDate: item.volumeInfo.publishedDate,
+                            image: item.volumeInfo.imageLinks.thumbnail
+                        }
+                        console.log(book)
+                        results.push(book)
                     }
-                    console.log(book)
-                    results.push(book)
                 })
             })
             .then(() => setBooks(results))
