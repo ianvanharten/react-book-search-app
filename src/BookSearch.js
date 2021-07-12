@@ -8,8 +8,8 @@ function BookSearch() {
     return(
         <div className='bookSearchStyles'>
             <div>
-                <input ref={bookSearchRef} type="text" />
-                <button onClick={getBookData}>Search</button>
+                <input className='input' ref={bookSearchRef} type="text" />
+                <button className='button is-primary' onClick={getBookData}>Search</button>
             </div>
 
             <div className='bookResultsStyles'>
