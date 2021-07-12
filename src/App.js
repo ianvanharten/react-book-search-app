@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from './Header'
 import BookSearch from './BookSearch'
 
 function App() {
@@ -11,7 +10,7 @@ function App() {
 
   return (
     <div style={appStyles}>
-        <Header />
+        <h1>Book Search App</h1>
         <BookSearch />
     </div>
   );
