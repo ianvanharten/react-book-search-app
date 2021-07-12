@@ -13,4 +13,23 @@ body {
   align-items: center;
 }
 
+.bookCardStyles {
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.descriptionStyles {
+  line-height: 2;
+  font-size: 16px;
+  width: 60%;
+}
+
 

@@ -4,19 +4,6 @@ import Modal from 'react-modal'
 function BookCard(props) {
     const [modalIsOpen, setIsOpen] = useState(false)
 
-    const bookCardStyles = {
-        width: '300px',
-        height: '300px',
-        margin: '20px',
-        padding: '10px',
-        border: '1px solid black',
-        borderRadius: '10px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-around'
-    }
-
     Modal.defaultStyles = {
         overlay: {
             position: 'fixed',
@@ -43,12 +30,6 @@ function BookCard(props) {
         }
     }
 
-    const descriptionStyles = {
-        lineHeight: '2',
-        fontSize: '16px',
-        width: '60%'
-    }
-
     function openModal() {
         setIsOpen(true)
     }
@@ -59,7 +40,7 @@ function BookCard(props) {
 
     return (
         <div>
-            <div style={bookCardStyles}>
+            <div className='bookCardStyles'>
                 <h3>{props.book.title}</h3>
                 <img src={props.book.image} alt={props.book.title + 'cover image'}/>
                 <p>By: {props.book.author[0]}</p>
@@ -69,11 +50,10 @@ function BookCard(props) {
                 <h2>{props.book.title}</h2>
                 <img src={props.book.image} alt={props.book.title + 'cover image'} style={{width: '12%'}}/>
                 <p>{props.book.author[0]}</p>
-                <p style={descriptionStyles}>{props.book.description}</p>
+                <p className='descriptionStyles'>{props.book.description}</p>
                 <button onClick={closeModal}>Close</button>
             </Modal>
         </div>
-
     )
 }
 
