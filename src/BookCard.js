@@ -51,6 +51,7 @@ function BookCard(props) {
                 <p className='subtitle'>By {props.book.author[0]}</p>
                 <p className='subtitle'>{props.book.publishedDate}</p>
                 <img src={props.book.image} alt={props.book.title + 'cover image'}/>
+                <p className='mt-3'>{props.book.pageCount} pages</p>
                 <div className='content has-background-white-ter m-5 p-5'>
                     <p className='subtitle'>Description</p>
                     <p className='descriptionStyles'>{props.book.description}</p>

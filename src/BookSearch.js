@@ -34,6 +34,7 @@ function BookSearch() {
                         && item.volumeInfo.hasOwnProperty('description')
                         && item.volumeInfo.hasOwnProperty('categories')
                         && item.volumeInfo.hasOwnProperty('publishedDate')
+                        && item.volumeInfo.hasOwnProperty('pageCount')
                         && item.volumeInfo.hasOwnProperty('imageLinks'))
                     {
                         let book = {
@@ -43,6 +44,7 @@ function BookSearch() {
                             description: item.volumeInfo.description,
                             categories: item.volumeInfo.categories,
                             publishedDate: new Date(item.volumeInfo.publishedDate).getFullYear(),
+                            pageCount: item.volumeInfo.pageCount,
                             image: item.volumeInfo.imageLinks.thumbnail
                         }
                         console.log(book)
