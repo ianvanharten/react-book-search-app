@@ -22,7 +22,7 @@ function BookCard(props) {
             borderRadius: '4px',
             outline: 'none',
             padding: '40px',
-            width: '70%',
+            width: '50%',
             margin: '0 auto',
             display: 'flex',
             flexDirection: 'column',
@@ -41,17 +41,21 @@ function BookCard(props) {
     return (
         <div>
             <div className='bookCardStyles'>
-                <h3>{props.book.title}</h3>
+                <h3 className='title is-4 is-centered'>{props.book.title}</h3>
                 <img src={props.book.image} alt={props.book.title + 'cover image'}/>
-                <p>By: {props.book.author[0]}</p>
-                <button onClick={openModal}>Details</button>
+                <p className='subtitle'>By: {props.book.author[0]}</p>
+                <button className='button is-link is-light' onClick={openModal}>Details</button>
             </div>
             <Modal isOpen={modalIsOpen}>
-                <h2>{props.book.title}</h2>
-                <img src={props.book.image} alt={props.book.title + 'cover image'} style={{width: '12%'}}/>
-                <p>{props.book.author[0]}</p>
-                <p className='descriptionStyles'>{props.book.description}</p>
-                <button onClick={closeModal}>Close</button>
+                <h2 className='title'>{props.book.title}</h2>
+                <p className='subtitle'>By {props.book.author[0]}</p>
+                <p className='subtitle'>{props.book.publishedDate}</p>
+                <img src={props.book.image} alt={props.book.title + 'cover image'}/>
+                <div className='content has-background-white-ter m-5 p-5'>
+                    <p className='subtitle'>Description</p>
+                    <p className='descriptionStyles'>{props.book.description}</p>
+                </div>
+                <button className='button is-dark' onClick={closeModal}>Close</button>
             </Modal>
         </div>
     )

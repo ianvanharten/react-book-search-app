@@ -7,9 +7,9 @@ function BookSearch() {
 
     return(
         <div className='bookSearchStyles'>
-            <div>
-                <input className='input' ref={bookSearchRef} type="text" />
-                <button className='button is-primary' onClick={getBookData}>Search</button>
+            <div className='bookSearchForm m-2'>
+                <input className='input m-2' ref={bookSearchRef} type="text" />
+                <button className='button is-success m-2' onClick={getBookData}>Search</button>
             </div>
 
             <div className='bookResultsStyles'>
@@ -42,7 +42,7 @@ function BookSearch() {
                             author: item.volumeInfo.authors,
                             description: item.volumeInfo.description,
                             categories: item.volumeInfo.categories,
-                            publishedDate: item.volumeInfo.publishedDate,
+                            publishedDate: new Date(item.volumeInfo.publishedDate).getFullYear(),
                             image: item.volumeInfo.imageLinks.thumbnail
                         }
                         console.log(book)
