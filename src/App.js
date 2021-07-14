@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div className='app'>
-        <h1 className='title'>Book Search App</h1>
+        <h1 className='bookAppTitle title m-5 has-background-white-bis'>Book Search App</h1>
         <BookSearch />
     </div>
   );
