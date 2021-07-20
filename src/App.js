@@ -4,8 +4,8 @@ import BookSearch from './BookSearch'
 function App() {
 
   return (
-    <div className='app'>
-        <h1 className='bookAppTitle title m-5 has-background-white-bis'>Book Search App</h1>
+    <div className='app has-background-white-bis'>
+        <h1 className='bookAppTitle title m-5'>Book Search App</h1>
         <BookSearch />
     </div>
   );
