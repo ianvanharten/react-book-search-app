@@ -43,7 +43,7 @@ function BookCard(props) {
     return (
         <div>
             <div className='bookCardStyles has-background-white'>
-                <h3 className='title is-4 is-centered'>{props.book.title}</h3>
+                <h3 className='title is-4 is-centered m-3'>{props.book.title}</h3>
                 <img src={props.book.image} alt={props.book.title + 'cover image'}/>
                 <p className='subtitle'>By: {props.book.author[0]}</p>
                 <button className='button is-link is-light' onClick={openModal}>Details</button>
