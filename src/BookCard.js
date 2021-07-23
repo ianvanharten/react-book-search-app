@@ -1,8 +1,10 @@
 import React, {useState} from "react"
 import Modal from 'react-modal'
+import BookDescription from "./BookDescription"
 
 function BookCard(props) {
     const [modalIsOpen, setIsOpen] = useState(false)
+
 
     Modal.defaultStyles = {
         overlay: {
@@ -16,7 +18,7 @@ function BookCard(props) {
         content: {
             position: 'absolute',
             inset: '40px',
-            border: '3px solid rgb(204, 204, 204)',
+            border: '3px solid rgb(40, 59, 89)',
             background: 'rgb(255, 255, 255)',
             overflow: 'auto',
             borderRadius: '4px',
@@ -52,9 +54,8 @@ function BookCard(props) {
                 <p className='subtitle'>{props.book.publishedDate}</p>
                 <img src={props.book.image} alt={props.book.title + 'cover image'}/>
                 <p className='mt-3'>{props.book.pageCount} pages</p>
-                <div className='content has-background-white-ter m-5 p-5'>
-                    <p className='subtitle'>Description</p>
-                    <p className='descriptionStyles'>{props.book.description}</p>
+                <div className='descriptionBox content has-background-white-ter m-5 p-5'>
+                    <BookDescription description={props.book.description} />
                 </div>
                 <button className='button is-dark' onClick={closeModal}>Close</button>
             </Modal>
