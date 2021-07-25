@@ -36,28 +36,30 @@ function BookSearch() {
         fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}`)
             .then(response => response.json())
             .then(data => {
-                data.items.forEach((item) => {
-                    if (item.hasOwnProperty('id')
-                        && item.volumeInfo.hasOwnProperty('title')
-                        && item.volumeInfo.hasOwnProperty('authors')
-                        && item.volumeInfo.hasOwnProperty('description')
-                        && item.volumeInfo.hasOwnProperty('categories')
-                        && item.volumeInfo.hasOwnProperty('publishedDate')
-                        && item.volumeInfo.hasOwnProperty('pageCount')
-                        && item.volumeInfo.hasOwnProperty('imageLinks')) {
-                        let book = {
-                            id: item.id,
-                            title: item.volumeInfo.title,
-                            author: item.volumeInfo.authors,
-                            description: item.volumeInfo.description,
-                            categories: item.volumeInfo.categories,
-                            publishedDate: new Date(item.volumeInfo.publishedDate).getFullYear(),
-                            pageCount: item.volumeInfo.pageCount,
-                            image: item.volumeInfo.imageLinks.thumbnail
+                if (data.items) {
+                    data.items.forEach((item) => {
+                        if (item.hasOwnProperty('id')
+                            && item.volumeInfo.hasOwnProperty('title')
+                            && item.volumeInfo.hasOwnProperty('authors')
+                            && item.volumeInfo.hasOwnProperty('description')
+                            && item.volumeInfo.hasOwnProperty('categories')
+                            && item.volumeInfo.hasOwnProperty('publishedDate')
+                            && item.volumeInfo.hasOwnProperty('pageCount')
+                            && item.volumeInfo.hasOwnProperty('imageLinks')) {
+                            let book = {
+                                id: item.id,
+                                title: item.volumeInfo.title,
+                                author: item.volumeInfo.authors,
+                                description: item.volumeInfo.description,
+                                categories: item.volumeInfo.categories,
+                                publishedDate: new Date(item.volumeInfo.publishedDate).getFullYear(),
+                                pageCount: item.volumeInfo.pageCount,
+                                image: item.volumeInfo.imageLinks.thumbnail
+                            }
+                            results.push(book)
                         }
-                        results.push(book)
-                    }
-                })
+                    })
+                }
             })
             .then(() => setBooks(results))
     }
