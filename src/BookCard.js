@@ -5,7 +5,6 @@ import BookDescription from "./BookDescription"
 function BookCard(props) {
     const [modalIsOpen, setIsOpen] = useState(false)
 
-
     Modal.defaultStyles = {
         overlay: {
             position: 'fixed',
@@ -24,7 +23,7 @@ function BookCard(props) {
             borderRadius: '4px',
             outline: 'none',
             padding: '40px',
-            width: '50%',
+            width: '80%',
             margin: '0 auto',
             display: 'flex',
             flexDirection: 'column',
