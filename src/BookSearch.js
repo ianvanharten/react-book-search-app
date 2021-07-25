@@ -1,24 +1,34 @@
-import React, { useState, useRef } from "react"
+import React, {useState, useRef} from "react"
 import BookCard from "./BookCard"
 
 function BookSearch() {
-    const [ books, setBooks ] = useState([])
+    const [books, setBooks] = useState([])
     const bookSearchRef = useRef()
 
-    return(
+    return (
         <div className='bookSearchStyles'>
             <div className='bookSearchForm m-2'>
-                <input className='input m-2' ref={bookSearchRef} type="text" />
-                <button className='button is-success m-2' onClick={getBookData}>Search</button>
+                <input className='input m-2' ref={bookSearchRef} type="text" onKeyPress={(e) => handleKeyPress(e)}/>
+                <button
+                    className='button is-success m-2'
+                    onClick={getBookData}>
+                    Search
+                </button>
             </div>
 
             <div className='bookResultsStyles'>
                 {books.map((book) => {
-                    return <BookCard key={book.id} book={book} />
+                    return <BookCard key={book.id} book={book}/>
                 })}
             </div>
         </div>
     )
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            getBookData()
+        }
+    }
 
     function getBookData() {
         const searchQuery = bookSearchRef.current.value
@@ -35,8 +45,7 @@ function BookSearch() {
                         && item.volumeInfo.hasOwnProperty('categories')
                         && item.volumeInfo.hasOwnProperty('publishedDate')
                         && item.volumeInfo.hasOwnProperty('pageCount')
-                        && item.volumeInfo.hasOwnProperty('imageLinks'))
-                    {
+                        && item.volumeInfo.hasOwnProperty('imageLinks')) {
                         let book = {
                             id: item.id,
                             title: item.volumeInfo.title,
